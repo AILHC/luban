@@ -22,8 +22,8 @@ namespace Luban.Job.Cfg.l10n
             if (!_texts.TryAdd(key, (record, text)) && _texts[key].Text != text)
             {
                 throw new Exception($@"text key:{key} 出现多次，但值不相同. 
-                当前:{text} 位置:{record.Source}
-                之前:{_texts[key].Text} 位置:{_texts[key].Record.Source}");
+                当前:{text} 位置:{record.Source},工作表:{record.SheetName}
+                之前:{_texts[key].Text} 位置:{_texts[key].Record.Source},工作表:{_texts[key].Record.SheetName}");
             }
         }
 

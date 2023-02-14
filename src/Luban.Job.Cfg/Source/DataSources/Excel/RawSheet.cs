@@ -10,6 +10,7 @@ namespace Luban.Job.Cfg.DataSources.Excel
 
     class RawSheet
     {
+        public string SheetName { get; set; }
         public Title Title { get; set; }
 
         public string TableName { get; set; }

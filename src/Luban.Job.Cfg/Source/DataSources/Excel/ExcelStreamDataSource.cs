@@ -52,12 +52,13 @@ namespace Luban.Job.Cfg.DataSources.Excel
                     while(!stream.TryReadEOF())
                     {
                         var data = (DBean)type.Apply(ExcelStreamDataCreator.Ins, stream);
-                        datas.Add(new Record(data, sheet.RawUrl, null));
+                        datas.Add(new Record(data, sheet.RawUrl, null, sheet.Name));
                     }
                 }
                 catch (DataCreateException dce)
                 {
                     dce.OriginDataLocation = sheet.RawUrl;
+                    dce.OriginDataSheetName = sheet.Name;
                     throw;
                 }
                 catch (Exception e)

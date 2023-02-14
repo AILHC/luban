@@ -43,8 +43,8 @@ namespace Luban.Job.Cfg.Validators
             }
             if (!_datas.Contains(data))
             {
-                ctx.Assembly.Agent.Error("记录 {0}:{1} (来自文件:{2}) 值不在set:{3}中", ValidatorContext.CurrentRecordPath, data,
-                    ValidatorContext.CurrentVisitor.CurrentValidateRecord.Source, _valueSetStr);
+                ctx.Assembly.Agent.Error("记录 {0}:{1} (来自文件:{2},工作表:{3}) 值不在set:{4}中", ValidatorContext.CurrentRecordPath, data,
+                    ValidatorContext.CurrentVisitor.CurrentValidateRecord.Source, ValidatorContext.CurrentVisitor.CurrentValidateRecord.SheetName, _valueSetStr);
             }
         }
     }

@@ -64,8 +64,9 @@ namespace Luban.Job.Cfg.Validators
                             if (!rec.IsNotFiltered(assembly.ExcludeTags))
                             {
                                 string locationFile = ValidatorContext.CurrentVisitor.CurrentValidateRecord.Source;
-                                assembly.Agent.Error("记录 {0} = {1} (来自文件:{2}) 在引用表:{3} 中存在，但导出时被过滤了",
-                                    ValidatorContext.CurrentRecordPath, key, locationFile, defTable.FullName);
+                                string locationSheetName = ValidatorContext.CurrentVisitor.CurrentValidateRecord.SheetName;
+                                assembly.Agent.Error("记录 {0} = {1} (来自文件:{2},工作表:{3}) 在引用表:{4} 中存在，但导出时被过滤了",
+                                    ValidatorContext.CurrentRecordPath, key, locationFile, locationSheetName, defTable.FullName);
                             }
                             return;
                         }
@@ -79,8 +80,9 @@ namespace Luban.Job.Cfg.Validators
                             if (!rec.IsNotFiltered(assembly.ExcludeTags))
                             {
                                 string locationFile = ValidatorContext.CurrentVisitor.CurrentValidateRecord.Source;
-                                assembly.Agent.Error("记录 {0} = {1} (来自文件:{2}) 在引用表:{3} 中存在，但导出时被过滤了",
-                                    ValidatorContext.CurrentRecordPath, key, locationFile, defTable.FullName);
+                                string locationSheetName = ValidatorContext.CurrentVisitor.CurrentValidateRecord.SheetName;
+                                assembly.Agent.Error("记录 {0} = {1} (来自文件:{2},工作表:{3}) 在引用表:{4} 中存在，但导出时被过滤了",
+                                    ValidatorContext.CurrentRecordPath, key, locationFile, locationSheetName, defTable.FullName);
                             }
                             return;
                         }
@@ -91,9 +93,10 @@ namespace Luban.Job.Cfg.Validators
             }
 
             string source = ValidatorContext.CurrentVisitor.CurrentValidateRecord.Source;
+            string sheetName = ValidatorContext.CurrentVisitor.CurrentValidateRecord.SheetName;
             foreach (var table in _compiledTables)
             {
-                assembly.Agent.Error("记录 {0} = {1} (来自文件:{2}) 在引用表:{3} 中不存在", ValidatorContext.CurrentRecordPath, key, source, table.Table.FullName);
+                assembly.Agent.Error("记录 {0} = {1} (来自文件:{2},工作表:{3}) 在引用表:{4} 中不存在", ValidatorContext.CurrentRecordPath, key, source, sheetName, table.Table.FullName);
             }
         }
 

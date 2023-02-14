@@ -265,6 +265,7 @@ namespace Luban.Job.Cfg
     解析失败!
 
         文件:        {e.OriginDataLocation}
+        工作表:      {e.OriginDataSheetName}
         错误位置:    {e.DataLocationInFile}
         Err:         {e.OriginErrorMsg}
         字段:        {e.VariableFullPathStr}

@@ -75,7 +75,7 @@ namespace Luban.Job.Cfg.DataSources.Excel
             ValidateTitles(cells);
             var title = ParseTitle(cells, reader.MergeCells, orientRow);
             cells.RemoveAll(c => IsNotDataRow(c));
-            return new RawSheet() { Title = title, TableName = tableName, Cells = cells };
+            return new RawSheet() {SheetName = reader.Name, Title = title, TableName = tableName, Cells = cells };
         }
 
 

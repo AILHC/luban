@@ -25,7 +25,7 @@ namespace Luban.Job.Cfg.DataSources.Excel
 
             foreach (RawSheet rawSheet in SheetLoadUtil.LoadRawSheets(rawUrl, sheetName, stream))
             {
-                var sheet = new RowColumnSheet(rawUrl, sheetName);
+                var sheet = new RowColumnSheet(rawUrl, rawSheet.SheetName);
                 sheet.Load(rawSheet);
                 _sheets.Add(sheet);
             }
@@ -67,12 +67,13 @@ namespace Luban.Job.Cfg.DataSources.Excel
                             continue;
                         }
                         var data = (DBean)type.Apply(SheetDataCreator.Ins, sheet, row);
-                        datas.Add(new Record(data, sheet.RawUrl, DataUtil.ParseTags(tagStr)));
+                        datas.Add(new Record(data, sheet.RawUrl, DataUtil.ParseTags(tagStr), sheet.Name));
                     }
                 }
                 catch (DataCreateException dce)
                 {
                     dce.OriginDataLocation = sheet.RawUrl;
+                    dce.OriginDataSheetName = sheet.Name;
                     throw;
                 }
                 catch (Exception e)

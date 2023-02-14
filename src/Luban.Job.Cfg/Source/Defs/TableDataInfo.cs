@@ -84,8 +84,8 @@ namespace Luban.Job.Cfg.Defs
                         if (!recordMap.TryAdd(key, r))
                         {
                             throw new Exception($@"配置表 '{table.FullName}' 主文件 主键字段:'{table.Index}' 主键值:'{key}' 重复.
-        记录1 来自文件:{r.Source}
-        记录2 来自文件:{recordMap[key].Source}
+        记录1 来自文件:{r.Source},工作表:{r.SheetName}
+        记录2 来自文件:{recordMap[key].Source},工作表:{recordMap[key].SheetName}
 ");
                         }
                     }
@@ -131,8 +131,8 @@ namespace Luban.Job.Cfg.Defs
                             if (!unionRecordMap.TryAdd(unionKeys, r))
                             {
                                 throw new Exception($@"配置表 '{table.FullName}' 主文件 主键字段:'{table.Index}' 主键值:'{Bright.Common.StringUtil.CollectionToString(unionKeys)}' 重复.
-        记录1 来自文件:{r.Source}
-        记录2 来自文件:{unionRecordMap[unionKeys].Source}
+        记录1 来自文件:{r.Source},工作表:{r.SheetName}
+        记录2 来自文件:{unionRecordMap[unionKeys].Source},工作表:{unionRecordMap[unionKeys].SheetName}
 ");
                             }
                         }
@@ -160,8 +160,8 @@ namespace Luban.Job.Cfg.Defs
                                 if (!recordMap.TryAdd(key, r))
                                 {
                                     throw new Exception($@"配置表 '{table.FullName}' 主文件 主键字段:'{indexInfo.IndexField.Name}' 主键值:'{key}' 重复.
-        记录1 来自文件:{r.Source}
-        记录2 来自文件:{recordMap[key].Source}
+        记录1 来自文件:{r.Source},工作表:{r.SheetName}
+        记录2 来自文件:{recordMap[key].Source},工作表:{recordMap[key].SheetName}
 ");
                                 }
                             }

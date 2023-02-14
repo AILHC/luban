@@ -180,10 +180,11 @@ namespace Luban.Job.Cfg.Validators
                 }
 
                 string source = ValidatorContext.CurrentVisitor.CurrentValidateRecord.Source;
+                string sheetName = ValidatorContext.CurrentVisitor.CurrentValidateRecord.SheetName;
                 object finalPaths = PathPattern.CalcFinalPath(value);
                 if (finalPaths == null)
                 {
-                    assembly.Agent.Error("{0}:{1} (来自文件:{2}) 资源格式不合法", ValidatorContext.CurrentRecordPath, value, source);
+                    assembly.Agent.Error("{0}:{1} (来自文件:{2},工作表:{3}) 资源格式不合法", ValidatorContext.CurrentRecordPath, value, source, sheetName);
                     return;
                 }
                 ctx.AddPathQuery(new PathQuery

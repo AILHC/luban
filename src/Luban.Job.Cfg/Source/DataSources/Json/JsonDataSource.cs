@@ -67,7 +67,7 @@ namespace Luban.Job.Cfg.DataSources.Json
             }
 
             var data = (DBean)type.Apply(JsonDataCreator.Ins, ele, (DefAssembly)type.Bean.AssemblyBase);
-            return new Record(data, RawUrl, tags);
+            return new Record(data, RawUrl, tags,"");
         }
 
         public override Record ReadOne(TBean type)

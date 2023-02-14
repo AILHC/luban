@@ -9,6 +9,8 @@ namespace Luban.Job.Cfg.DataSources
 
         public string Source { get; }
 
+        public string SheetName { get; }
+
         public List<string> Tags { get; }
 
         public bool IsNotFiltered(List<string> excludeTags)
@@ -20,10 +22,11 @@ namespace Luban.Job.Cfg.DataSources
             return Tags.TrueForAll(t => !excludeTags.Contains(t));
         }
 
-        public Record(DBean data, string source, List<string> tags)
+        public Record(DBean data, string source, List<string> tags,string sheetName=null)
         {
             Data = data;
             Source = source;
+            SheetName = sheetName;
             Tags = tags;
         }
     }

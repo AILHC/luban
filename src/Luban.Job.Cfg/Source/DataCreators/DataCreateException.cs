@@ -11,6 +11,8 @@ namespace Luban.Job.Cfg.DataCreators
 
         public string OriginDataLocation { get; set; }
 
+        public string OriginDataSheetName { get; set; }
+
         public string DataLocationInFile { get; }
 
         public string OriginErrorMsg { get; }
