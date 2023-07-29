@@ -220,11 +220,11 @@ namespace Luban.Job.Cfg.Utils
             var table = field.Assembly.GetCfgTable(field.Ref.FirstTable);
             if (field.IsNullable)
             {
-                return $"this.{refVarName} = {name} != undefined ? (_tables.get('{tableName}') as  {table.FullName}).get({name}) : undefined";
+                return $"this.{refVarName} = {name} != undefined ? (_tables.{table.Name}).get({name}) : undefined";
             }
             else
             {
-                return $"this.{refVarName} = (_tables.get('{tableName}') as {table.FullName}).get({name})!";
+                return $"this.{refVarName} = (_tables.{table.Name}).get({name})!";
             }
         }
 

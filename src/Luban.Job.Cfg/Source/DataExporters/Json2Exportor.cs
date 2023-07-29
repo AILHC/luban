@@ -50,15 +50,15 @@ namespace Luban.Job.Cfg.DataExporters
             }
         }
 
-        public override void Accept(DMap type, Utf8JsonWriter x)
-        {
-            x.WriteStartObject();
-            foreach (var d in type.Datas)
-            {
-                x.WritePropertyName(d.Key.Apply(ToJsonPropertyNameVisitor.Ins));
-                d.Value.Apply(this, x);
-            }
-            x.WriteEndObject();
-        }
+        //public override void Accept(DMap type, Utf8JsonWriter x)
+        //{
+        //    x.WriteStartObject();
+        //    foreach (var d in type.Datas)
+        //    {
+        //        x.WritePropertyName(d.Key.Apply(ToJsonPropertyNameVisitor.Ins));
+        //        d.Value.Apply(this, x);
+        //    }
+        //    x.WriteEndObject();
+        //}
     }
 }

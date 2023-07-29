@@ -80,17 +80,17 @@ namespace Luban.Job.Cfg.TypeVisitors
 
         public string Accept(TBean type, string fieldName, string tablesName)
         {
-            return $"if ({fieldName} != null) {{ {fieldName}.resolve({tablesName});}}";
+            return $"if ({fieldName} != null) {{ {fieldName}.resolve?.({tablesName});}}";
         }
 
         public string Accept(TArray type, string fieldName, string tablesName)
         {
-            return $"for(let _e of {fieldName}) {{ if (_e != null) {{ _e.resolve({tablesName}); }} }}";
+            return $"for(let _e of {fieldName}) {{ if (_e != null) {{ _e.resolve?.({tablesName}); }} }}";
         }
 
         public string Accept(TList type, string fieldName, string tablesName)
         {
-            return $"for(let _e of {fieldName}) {{ if (_e != null ) {{_e.resolve({tablesName});}} }}";
+            return $"for(let _e of {fieldName}) {{ if (_e != null ) {{_e.resolve?.({tablesName});}} }}";
         }
 
         public string Accept(TSet type, string fieldName, string tablesName)
@@ -100,7 +100,7 @@ namespace Luban.Job.Cfg.TypeVisitors
 
         public string Accept(TMap type, string fieldName, string tablesName)
         {
-            return $"for(let _e of {fieldName}.values()) {{ if (_e != null) {{_e.resolve({tablesName});}} }}";
+            return $"for(let _e of {fieldName}.values()) {{ if (_e != null) {{_e.resolve?.({tablesName});}} }}";
         }
 
         public string Accept(TVector2 type, string fieldName, string tablesName)

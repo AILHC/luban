@@ -122,13 +122,13 @@ namespace Luban.Job.Cfg.TypeVisitors
             }
             else
             {
-                return $"{{ {fieldName} = new {type.Apply(TypescriptDefineTypeNameVisitor.Ins)}(); for(var _ele of {jsonVarName}) {{ let _e:{type.ElementType.Apply(TypescriptDefineTypeNameVisitor.Ins)}; {type.ElementType.Apply(this, "_ele", "_e")}; {fieldName}.add(_e);}}}}";
+                return $"{{ {fieldName} = new {type.Apply(TypescriptDefineTypeNameVisitor.Ins)}(); for(let _ele of {jsonVarName}) {{ let _e:{type.ElementType.Apply(TypescriptDefineTypeNameVisitor.Ins)}; {type.ElementType.Apply(this, "_ele", "_e")}; {fieldName}.add(_e);}}}}";
             }
         }
 
         public string Accept(TMap type, string jsonVarName, string fieldName)
         {
-            return $"{fieldName} = new {type.Apply(TypescriptDefineTypeNameVisitor.Ins)}(); for(var _entry_ of {jsonVarName}) {{ let _k:{type.KeyType.Apply(TypescriptDefineTypeNameVisitor.Ins)}; {type.KeyType.Apply(this, "_entry_[0]", "_k")};  let _v:{type.ValueType.Apply(TypescriptDefineTypeNameVisitor.Ins)};  {type.ValueType.Apply(this, "_entry_[1]", "_v")}; {fieldName}.set(_k, _v);  }}";
+            return $"{fieldName} = new {type.Apply(TypescriptDefineTypeNameVisitor.Ins)}(); for(let _entry_ of {jsonVarName}) {{ let _k:{type.KeyType.Apply(TypescriptDefineTypeNameVisitor.Ins)}; {type.KeyType.Apply(this, "_entry_[0]", "_k")};  let _v:{type.ValueType.Apply(TypescriptDefineTypeNameVisitor.Ins)};  {type.ValueType.Apply(this, "_entry_[1]", "_v")}; {fieldName}.set(_k, _v);  }}";
 
         }
 

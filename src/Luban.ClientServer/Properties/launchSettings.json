@@ -4,6 +4,18 @@
       "commandName": "Project",
       "commandLineArgs": "-j cfg -- -d ..\\..\\DesignerConfigs\\Defines\\__root__.xml --input_data_dir ..\\..\\DesignerConfigs\\Datas --output_code_dir Assets/Gen  --output_data_dir ..\\GenerateDatas\\json  --gen_types code_cs_unity_json,data_json  -s all ",
       "workingDirectory": "..\\..\\..\\luban_examples\\Projects\\Csharp_Unity_json"
+    },
+    "data_json_monolithic": {
+      "commandName": "Project",
+      "commandLineArgs": "-j cfg -- -d ..\\..\\DesignerConfigs\\Defines\\__root__.xml --input_data_dir ..\\..\\DesignerConfigs\\Datas --output_code_dir Assets/Gen  --output_data_dir ..\\GenerateDatas\\json_monolithic --output:data:json_monolithic_file ..\\GenerateDatas\\json_monolithic\\all2.json --gen_types data_json_monolithic  -s all ",
+      "workingDirectory": "..\\..\\..\\luban_examples\\Projects\\Csharp_Unity_json",
+      "nativeDebugging": false
+    },
+    "code_ts": {
+      "commandName": "Project",
+      "commandLineArgs": "-j cfg -- -d ..\\..\\DesignerConfigs\\Defines\\__root__.xml --input_data_dir ..\\..\\DesignerConfigs\\Datas --output_code_dir ..\\GenerateDatas\\cfg_codes  --gen_types code_typescript_json  -s all ",
+      "workingDirectory": "..\\..\\..\\luban_examples\\Projects\\Csharp_Unity_json",
+      "nativeDebugging": false
     }
   }
 }
