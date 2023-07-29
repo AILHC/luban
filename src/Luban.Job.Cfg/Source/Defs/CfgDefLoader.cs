@@ -322,7 +322,16 @@ namespace Luban.Job.Cfg.Defs
             {
                 var source = new ExcelRowColumnDataSource();
                 var stream = new MemoryStream(await this.Agent.GetFromCacheOrReadAllBytesAsync(file.ActualFile, file.MD5));
-                tableDefInfo = source.LoadTableDefInfo(file.OriginFile, file.SheetName, stream);
+                if(table.Mode == ETableMode.ONE)
+                {
+                    //单例表特殊处理
+                    tableDefInfo = source.LoadTableDefInfo(file.OriginFile, file.SheetName, stream);
+                }
+                else
+                {
+                    tableDefInfo = source.LoadTableDefInfo(file.OriginFile, file.SheetName, stream);
+                }
+                
                 ExcelTableValueTypeDefInfoCacheManager.Instance.AddTableDefInfoToCache(file.MD5, file.SheetName, tableDefInfo);
             }
 
