@@ -47,22 +47,9 @@ public class Json2DataTarget : JsonDataTarget
             }
         }
     }
-
-    public override OutputFile ExportTable(DefTable table, List<Record> records)
+    public override void WriteTable(DefTable table, List<Record> records, Utf8JsonWriter x)
     {
-        var ss = new MemoryStream();
-        var jsonWriter = new Utf8JsonWriter(ss, new JsonWriterOptions()
-        {
-            Indented = !UseCompactJson,
-            SkipValidation = false,
-            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-        });
-        WriteAsObject(table, records, jsonWriter);
-        jsonWriter.Flush();
-        return new OutputFile()
-        {
-            File = $"{table.OutputDataFile}.{OutputFileExt}",
-            Content = DataUtil.StreamToBytes(ss),
-        };
+        this.WriteAsObject(table, records, x);
     }
+
 }
