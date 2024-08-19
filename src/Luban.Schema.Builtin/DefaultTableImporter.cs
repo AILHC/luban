@@ -27,8 +27,9 @@ public class DefaultTableImporter : ITableImporter
         var excelExts = new HashSet<string> { "xlsx", "xls", "xlsm", "csv" };
 
         var tables = new List<RawTable>();
-        foreach (string file in Directory.GetFiles(dataDir, "*", SearchOption.AllDirectories))
+        foreach (string file in Directory.GetFiles(dataDir, "!~$*.*", SearchOption.AllDirectories))
         {
+
             string fileName = Path.GetFileName(file);
             string ext = Path.GetExtension(fileName).TrimStart('.');
             if (!excelExts.Contains(ext))
